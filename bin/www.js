@@ -12,9 +12,10 @@ server.listen(app.get('port'), () => {
     console.log(`Server running at http://${host}:${port}`);
 });
 
-process.on('SIGINT', () => {
+process.on('SIGINT', async () => {
     console.log('Initiating server shutdown. . .');
-    server.close(() => {
+    console.log('Please wait for shutdown message before proceeding. . .');
+    let msg = await server.close(() => {
         console.log("Server successful shutdown.");
     });
 });

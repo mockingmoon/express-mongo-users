@@ -1,3 +1,7 @@
 node_modules
 
 workingdb.js
+
+routes/zypher.js
+models/bookModel.js
+models/readLogModel.js

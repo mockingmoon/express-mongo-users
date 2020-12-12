@@ -1,6 +1,6 @@
-var express = require('express');
+let express = require('express');
 
-var indexRouter = express.Router();
+let indexRouter = express.Router();
 
 indexRouter.route('/')
 .get((req, res, next) => {
