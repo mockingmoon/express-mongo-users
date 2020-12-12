@@ -10,8 +10,7 @@ let userRouter = express.Router();
 userRouter.use(express.json());
 
 userRouter.route('/')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200) })
-.get(cors.corsWithOptions, authenticate.checkJwtValidity, authenticate.verifyUser, authenticate.verifyAdmin, async (req, res, next) => {
+.get(cors.checkCorsValidity, authenticate.checkJwtValidity, authenticate.verifyUser, authenticate.verifyAdmin, async (req, res, next) => {
     // LIST ALL USERS
     try {
         let user = await Users.find({});
@@ -33,9 +32,9 @@ userRouter.route('/')
 });
 
 //UPDATE PROFILE
+// .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200) })
 userRouter.route('/updateProfile')
-.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200) })
-.put(cors.corsWithOptions, authenticate.checkJwtValidity, authenticate.verifyUser, async (req, res, next) => {
+.put(cors.checkCorsValidity, authenticate.checkJwtValidity, authenticate.verifyUser, async (req, res, next) => {
     /**
      * Updates user profile
      * Takes username as req.user.username
